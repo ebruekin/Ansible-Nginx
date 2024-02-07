@@ -1,0 +1,20 @@
+- hosts: game
+  become: true
+  tasks:
+    - name: Copy web page to remote directories (snake games) and nginx-config files to remote
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: '/opt/Ansible-Nginx/WebApp13/Game', dest: '/usr/share/nginx/' }
+        - { src: '/opt/Ansible-Nginx/WebApp13/Configs/WebApp13-nginx.conf', dest: '/etc/nginx/conf.d/default.conf' }
+
+- hosts: basic_html
+  tasks:
+    - name: Copy html page to remote and nginx-conf file to remote
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: '/opt/Ansible-Nginx/WebApp14/html/', dest: '/usr/share/nginx/html/' }
+        - { src: '/opt/Ansible-Nginx/WebApp14/Configs/WebApp14-nginx.conf', dest: '/etc/nginx/conf.d/default.conf' }

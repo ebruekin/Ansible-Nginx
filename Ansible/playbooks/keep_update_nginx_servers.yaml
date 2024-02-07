@@ -1,0 +1,12 @@
+---
+
+  - hosts: all
+    become: true  #  root (root yetkileriyle) olarak çalıştır.
+
+    tasks:
+      - name: Update yum packages
+        # YUM paketlerini güncelle ve yükselt
+        yum:
+          name: '*'         # '*' karakteri ile tüm paketleri seç
+          state: latest      # 'latest' ile paketleri en son sürüme yükselt
+          update_cache: yes  # YUM paket veritabanını güncelle

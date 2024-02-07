@@ -1,0 +1,17 @@
+---
+  - hosts: nginx_web_servers
+    become: true
+    tasks:
+      - name: Check Nginx configuration
+        command: nginx -t
+        register: nginx_config_check
+        ignore_errors: true
+
+      - name: Reload Nginx if configuration is okay
+        command: nginx -s reload
+        when: nginx_config_check.rc == 0
+
+      - name: Start Nginx if not running
+        service:
+          name: nginx
+          state: started
