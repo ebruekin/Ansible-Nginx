@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>Basit Web Oyunu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-board"></div>
-    <div id="score">Score: 0</div>
+    <div id="game-container">
+        <h1>Basit Web Oyunu</h1>
+        <p id="score">Skor: 0</p>
+        <button id="start-btn" onclick="startGame()">Oyuna Başla</button>
+        <div id="game-area"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
